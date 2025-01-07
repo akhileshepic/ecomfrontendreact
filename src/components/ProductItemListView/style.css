@@ -1,0 +1,13 @@
+.productItem .title{
+    line-height: 18px;
+}
+.productItem .info h4:hover {
+    color: #ed174a !important;
+}
+
+.productItem .actions button:hover svg{
+    color:white !important ;
+}
+.productItem .actions  svg{
+    pointer-events: none !important;
+}
