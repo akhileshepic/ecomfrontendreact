@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { IoSearchOutline } from "react-icons/io5";
@@ -9,10 +9,12 @@ import Badge from '@mui/material/Badge';
 import Navbar from '../Navbar';
 import { FaRegHeart } from "react-icons/fa";
 import { IoGitCompareOutline } from "react-icons/io5";
-
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { MyContext } from '../../App';
 
 
 const Header = () => {
+    const context = useContext(MyContext);
     return (
         <div>
             <div className='topsidebar border-b pb-4'>
@@ -49,8 +51,9 @@ const Header = () => {
                     </div>
                     <div className="col1 w-[24%]">
                         <div className='flex justify-end items-center'>
-
-                            <Button className='!bg-customPurple !text-white !border !rounded-[30px] !px-6 !capitalize'>Sign In</Button>
+                            <Link to="/login">
+                                <Button className='!bg-customPurple !text-white !border !rounded-[30px] !px-6 !capitalize'>Sign In</Button>
+                            </Link>
                             <IconButton aria-label="100" className="!bg-[#fff1ee] !ml-4 !w-[45px] !h-[45px] !border !rounded-[50%] !border-solid !text-[#0000001a]">
                                 <Badge color="error" badgeContent={0} showZero anchorOrigin={{
                                     vertical: 'top',
@@ -77,7 +80,7 @@ const Header = () => {
                                     <IoGitCompareOutline />
                                 </Badge>
                             </IconButton>
-                            <IconButton aria-label="100" className="!bg-[#fff1ee] !ml-4 !w-[45px] !h-[45px] !border !rounded-[50%] !border-solid !text-[#0000001a]">
+                            <IconButton aria-label="100" className="!bg-[#fff1ee] !ml-4 !w-[45px] !h-[45px] !border !rounded-[50%] !border-solid !text-[#0000001a]" onClick={() => context.setOpenCartPanel(!context.openCartPanel)}>
                                 <Badge color="error" badgeContent={0} showZero anchorOrigin={{
                                     vertical: 'top',
                                     horizontal: 'right',
@@ -87,7 +90,7 @@ const Header = () => {
                                             transform: 'translate(10px, -20px)', // Adjust badge position
                                         },
                                     }}>
-                                    <LocalMallOutlinedIcon />
+                                    <MdOutlineShoppingCart />
                                 </Badge>
                             </IconButton>
 
